@@ -1,6 +1,14 @@
 ### Azure Active Directory B2C - RealMe Integration
 
-This wiki explains how to configure Real Me as a SAML identity provider into Azure AD B2C. It uses Azure AD B2C custom policies (and Azure Functions):
+
+This wiki is forked from the original repo here: https://github.com/realme-govt-nz/azure-b2c-integration
+
+The purpose for forking it is to add updates and corrections as the original repo has grown out of maintenance.
+
+This wiki explains how to configure and integrate Azure AD B2C as a SAML service provider into DIA's RealMe serice. 
+It provides Azure AD B2C custom policies (and Azure Functions) to do so.
+
+There are the following RealMe services and environments.
 
 1. RealMe Login:
 - [MTS: Configure RealMe Login as an external SAML IdP](./Login-MTS.md)
@@ -11,8 +19,6 @@ This wiki explains how to configure Real Me as a SAML identity provider into Azu
 - [ITE integration](./Assertion-ITE.md)
 
 ### Miscellaneous
-
-- SSO: TODO Add Wiki
 - [D365 portal integration](./D365.md)
 
 ### Useful links
