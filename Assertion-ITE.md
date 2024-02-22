@@ -15,7 +15,7 @@ You will need to generate the metadata file before completing the ITE request.
 Follow the integration steps as describe for the MTS environment. You will have to adjust these steps:
 
 1. Use your own cert rather than using the certificate provided by RealMe (`mts_mutual_ssl_sp.pfx`).
-2. In the *TrustFrameworkExtensions.xml* file, check that these lines contain the correct SAML attribute to convert into a claim.   Note that previous versions of the MTS used a different SAML attribute names from ITE and Prod. However they should now align.  THerefore it is worthwhile checking the correct attribute names are being used.
+2. In the *TrustFrameworkExtensions.xml* file, check that these lines contain the correct SAML attribute to convert into a claim.   Note that previous versions of the MTS used a different SAML attribute names from ITE and Prod. However they should now align.  Therefore it is worthwhile checking the correct attribute names are being used.
 
     ```
     <OutputClaim ClaimTypeReferenceId="safeB64Identity" PartnerClaimType="urn:nzl:govt:ict:stds:authn:safeb64:attribute:igovt:IVS:Assertion:Identity" />
@@ -36,7 +36,7 @@ Follow the integration steps as describe for the MTS environment. You will have 
 ### Sample SAML Responses
 See the following page for a [sample SAML response](./SAML-Samples/sample-saml-assert-response.md) from the RealMe assert service.
 
-For developers there is nothing like seeing the actual decrypted traffic to understanding what is being reciebed and how the custom polcies should treat the claims.
+For developers there is nothing like seeing the actual decrypted traffic to understanding what is being received and how the custom policies should treat the claims.
 
 
 
@@ -47,11 +47,7 @@ For developers there is nothing like seeing the actual decrypted traffic to unde
 - `RCMS token required` in the **Opaque token** dropdown.
 - `Return JSON identity and/or address` in the **Additional setup description** textarea.
 
-## Obtaining the Federate Login Token
-
-TODO Add Wiki
 
 ## Decoding identity and address claims
 
 As part of the user journey, you can decode the safe base64 identity following this tutorial: [Decoding RealMe Claims](./Decoding-RealMe-Claims.md)
-
