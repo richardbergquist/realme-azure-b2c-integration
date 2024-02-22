@@ -13,4 +13,4 @@ This wiki explains how to integrate Real Me Login in the RealMe ITE environment:
 - Use your own cert rather than the certificate provided by RealMe (`mts_mutual_ssl_sp.pfx`).
 - Use the `ite-logon-service-metadata.xml` metadata file rather than the `MTSIdPLoginSAMLMetadata.xml` metadata file.
 
-4. Create An ITE Integration Request on the [RealMe developers website](https://developers.realme.govt.nz/)
+4. Create an ITE Integration Request on the [RealMe developers website](https://developers.realme.govt.nz/)
