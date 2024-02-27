@@ -4,7 +4,6 @@ The RealMe Assertion service returns the identity safe base64 encoded inside a S
 
 See the following page for a [sample SAML response](./SAML-Samples/sample-saml-assert-response.md) from the RealMe assert service.
 
-
 The Identity Experience Framework (IEF) that underlies Azure Active Directory B2C (Azure AD B2C) enables the identity developer to integrate an interaction with a RESTful API in a user journey.
 
 The scenario is that when a user performs a login, we want to:
@@ -13,7 +12,7 @@ The scenario is that when a user performs a login, we want to:
 - Decode these values.
 - Return these attributes to the application as a claim.
 
-### 1. Prepare the REST API function
+## 1. Prepare the REST API function
 
 > Setup of REST API functions is outside the scope of this article. [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference) provides an excellent toolkit to create RESTful services in the cloud.
 
@@ -44,7 +43,7 @@ An Azure function app makes it easy to get the function URL, which includes the 
 
 ![Get Azure Function URL](./.attachments/azure-function-url.png)
 
-### 2. Configure the RESTful API claims exchange as a technical profile in your TrustFrameworExtensions.xml file
+## 2. Configure the RESTful API claims exchange as a technical profile in your TrustFrameworExtensions.xml file
 
 A technical profile is the full configuration of the exchange desired with the RESTful service. Open the TrustFrameworkExtensions.xml file and add the following XML snippet inside the `<ClaimsProviders>` element.
 
@@ -80,9 +79,9 @@ The `<InputClaims>` element defines the claims that will be sent from the IEF to
 
 The `<OutputClaims>` element defines the claims that the IEF will expect from the REST service. Regardless of the number of claims that are received, the IEF will use only those identified here. In this example, a claim received as `decodedIdentity` will be mapped to an IEF claim called `identity`.
 
-### 3. Add new claims `identity` and `address` to the schema of your TrustFrameworkExtensions.xml file
+## 3. Add new claims `identity` and `address` to the schema of your TrustFrameworkExtensions.xml file
 
-The claims `identity` and `address` are not yet defined anywhere in our schema. So, add a definition inside the element <BuildingBlocks>. You can find this element at the beginning of the TrustFrameworkExtensions.xml file.
+The claims `identity` and `address` are not yet defined anywhere in our schema. So, add a definition inside the element `<BuildingBlocks>`. You can find this element at the beginning of the TrustFrameworkExtensions.xml file.
 
 ```xml
 <BuildingBlocks>
@@ -103,7 +102,7 @@ The claims `identity` and `address` are not yet defined anywhere in our schema. 
 </BuildingBlocks>
 ```
 
-### 4. Include the REST service claims exchange as an orchestration step in your realme assertion user journey in TrustFrameworkExtensions.xml
+## 4. Include the REST service claims exchange as an orchestration step in your realme assertion user journey in TrustFrameworkExtensions.xml
 
 Add a step to the SignUpSignInRealMeAssertion user journey, after the user has been authenticated (orchestration steps 1-2).
 
@@ -160,7 +159,7 @@ The final XML for the user journey should look like this:
 </UserJourneys>
 ```
 
-### 5. Add the claims `identity` and `address` to your relying party policy file so the claim is sent to your application
+## 5. Add the claims `identity` and `address` to your relying party policy file so the claim is sent to your application
 
 Edit your *SignUpSignInRealMeAssertion.xml* relying party (RP) file and modify the `<TechnicalProfile Id="PolicyProfile">` element to add the following elements:
 
