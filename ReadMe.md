@@ -34,7 +34,7 @@ There are the following RealMe services and environments.
 
 ## Supporting Guides
 
-- [Sample SAML response](./SAML-Samples/sample-saml-assert-response.md) from the RealMe Assertion Service
+- [Sample SAML response](./Sample-Saml-Assert-Response.md) from the RealMe Assertion Service
 - [How to decode identity claims](./Decoding-RealMe-Claims.md) returned from RealMe
 - [D365 portal integration](./D365.md)
 

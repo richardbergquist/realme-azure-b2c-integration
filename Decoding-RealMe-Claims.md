@@ -2,7 +2,7 @@
 
 The RealMe Assertion service returns the identity safe base64 encoded inside a SAML attribute.
 
-See the following page for a [sample SAML response](./SAML-Samples/sample-saml-assert-response.md) from the RealMe assert service.
+See the following page for a [sample SAML response](./Sample-Saml-Assert-Response.md) from the RealMe assert service.
 
 The Identity Experience Framework (IEF) that underlies Azure Active Directory B2C (Azure AD B2C) enables the identity developer to integrate an interaction with a RESTful API in a user journey.
 

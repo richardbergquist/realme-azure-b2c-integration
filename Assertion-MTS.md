@@ -14,7 +14,7 @@ Follow [this tutorial](https://docs.microsoft.com/en-us/azure/active-directory-b
 - Create a new Azure AD B2C tenant
 - Link your Azure AD B2C tenant to a subscription
 
-## Creating signing and encryption keys
+## Creating Signing and Encryption Keys
 
 Follow [this tutorial](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-get-started-custom#add-signing-and-encryption-keys) to:
 
@@ -57,7 +57,7 @@ However, to make testing the integration easier in the MTS environment RealMe pr
 7. In **Password**, enter the password of the certificate (you can find this information in the `readme.txt` file in the `Integration-Bundle-MTS-VX.X.zip` zipped file)
 8. Click **Create**.
 
-## Customizing the Custom policies files
+## Customising the Custom Policies Files
 
 The policies files used in this tutorial have been modified from the [SocialAndLocalAccounts](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccounts) starter pack.
 
@@ -88,12 +88,12 @@ To know more about policies files, you can read the associated documentation: [P
 
 - Save your changes.
 
-4. Upload the policies:
+5. Upload the Policies:
 
 - On the Custom Policies page of Identity Experience Framework, select **Upload Policy**.
 - In this order, upload `TrustFrameworkBase.xml`, `TrustFrameworkExtensions.xml`, `SignUpSignInRealMeAssertion.xml`.
 
-## Upload the B2C metadata file to RealMe
+## Upload the B2C Metadata File to RealMe
 
 1. Download the B2C metadata file (replace `yourtenant` with the name of your B2C tenant):
   `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/B2C_1A_SignUpSignInRealMeAssertion/samlp/metadata?idptp=RealMeAssertion-SAML2`
@@ -114,7 +114,7 @@ To know more about policies files, you can read the associated documentation: [P
 - Select the fields you need to be returned.
 - Click **Submit**.
 
-## Testing the policy
+## Testing the Policy
 
 To test the policy, create an application registration in the B2C.
 The configuration will direct the response to be send to <https://jwt.ms/>.  
@@ -145,13 +145,15 @@ You can inspect the token returned by B2C:
 - The **rcmsOpaqueToken** claim contains the RealMe `RCMS opaque token`.
 - The **issuerUserId** and **fit** claims will be returned correctly once integrated in the RealMe ITE environment.
 
-## Decoding the verified identity and address
+## Decoding the Verified Identity and Address
 
-To decode the identity and address as part of the B2C journey, you can refer to this link:
+The verified identity and address is returned as SAML attributes that are safe base64 encoded JSON payloads. These payloads can be passed back as-is as claims strings for the application to decode. Alternatively, the parsing of the base64 encoded JSON strings can also occur in the Azure AD B2C custom policy with the addition of the following extension logic.
+
+To decode the identity and address as part of the B2C journey, you can refer to this link that describes how to add an REST API connection into the custom policy flow.
 
 - [Walkthrough: Integrate REST API claims exchanges in your Azure AD B2C user journey as validation on user input](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-rest-api-validation-custom)
 
-You can use this code snippet to decode the safe base64 identity and address (in C#):
+Then you can use this code snippet to decode the safe base64 identity and address (in C#):
 
 ```C#
 using System;
@@ -167,7 +169,7 @@ private static string ConvertFromSafeBase64String(string safeb64)
 
 Refer to this link for further more complete documentation on [how to decode RealMe identity claims](./Decoding-RealMe-Claims.md).
 
-## Useful links
+## Useful Links
 
 Azure Active Directory B2C:
 

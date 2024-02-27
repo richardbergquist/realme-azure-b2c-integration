@@ -42,7 +42,7 @@ Follow the integration steps as describe for the MTS environment. You will have 
 
 ### Sample SAML Responses
 
-See the following page for a [sample SAML response](./SAML-Samples/sample-saml-assert-response.md) from the RealMe assert service.
+See the following page for a [sample SAML response](./Sample-Saml-Assert-Response.md) from the RealMe assert service.
 
 For developers there is nothing like seeing the actual decrypted traffic to understanding what is being received and how the custom policies should treat the claims.
 
