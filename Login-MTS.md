@@ -10,6 +10,23 @@ In this tutorial:
 - The only configured IdP is RealMe and we don't ask user to provide any further information so from a user perspective there is no interaction with Azure AD B2C.
 To configure more complex user journey, please refer to the [Useful links section](#useful-links)
 
+## What is the RealMe MTS Environment
+
+Integrating into an IdP such as RealMe over the SAML protocol requires the exchange of two key items
+
+- SAML metadata
+- SAML messaging certificates for signing and encrypting the SAML traffic
+
+These items need to be exchanged between parties and configured into the SAML providers on both sides. So in RealMe's case DIA need to configure the RealMe Azure AD B2C and the integrating party (RP) also needs to configure their SAML provider (e.g. another Azure AD B2C tenant). This sets up a "circle of trust" in SAML speak between the two SAML providers.
+
+However for integrators getting up to speed and trying out a RealMe integration for the first time DIA provides a Messaging Test Site (MTS) with a sample set of SAML messaging keys of a 'test integrator' configured. All the integrator needs to do is:
+
+- obtain these keys and configure their Azure AD B2C tenant with them
+- generate their SAML metadata accordingly and upload to a feature on the RealMe MTS to allow the SAML messaging to occur successfully.
+
+That is the overall picture. This guide walks through the detailed technical steps involved to colour in that picture.
+
+
 ## Creating an Azure AD B2C Tenant
 
 Follow [this tutorial](https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-tenant) to:
