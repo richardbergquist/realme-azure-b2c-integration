@@ -1,12 +1,14 @@
 # Sample SAML Response for Assert
 
 ## About
-The following is a decrypted SAML response from the RealMe Assert MTS
+
+The following is a decrypted SAML response from the RealMe Assert MTS. 
 It shows how the FIT and the identity attribute payloads are passed back.
 
 This guide is useful because the SAML messaging specifications for Login and Assert are not published on the [RealMe for developers](https://developers.realme.govt.nz/) site. For Azure AD B2C to pass the claims back it needs to know the actual names of the SAML attributes, which are not explicity stated on the RealMe developers site. The only way is to use developer tools to debug and inspect traffic to find out what an actual decrypted response looks like.
 
 ## Sample SAML Response
+
 The SAML response from RealMe is returned with the Assertion XML encrypted, which makes it hard to understand the attributes being passed back. The following is what the response looks after decryption, with the SAML attributes visible.
 
 ```xml
@@ -77,14 +79,13 @@ The SAML response from RealMe is returned with the Assertion XML encrypted, whic
 
 ## The Federated Identity Tag (FIT)
 
-Note that the identity payload is returned back as a SAML attribute called 
+Note that the identity payload is returned back as a SAML attribute called:
 
 `urn:nzl:govt:ict:stds:authn:attribute:igovt:IVS:FIT`
 
-
 ## The Identity Payload
 
-Note that the identity payload is returned back as a SAML attribute called 
+Note that the identity payload is returned back as a SAML attribute called:
 
 `urn:nzl:govt:ict:stds:authn:safeb64:attribute:igovt:IVS:Assertion:JSON:Identity`
 
@@ -96,7 +97,6 @@ Note that the identity payload is returned back as a SAML attribute called
 ```
 
 Obtaining the attribute value and using a base64 decodes gives the following json document which is also formatted for clarity.
-
 
 ```json
 {
@@ -122,10 +122,9 @@ Obtaining the attribute value and using a base64 decodes gives the following jso
 }
 ```
 
-
 ## The Address Payload
 
-Note that the address payload is returned back as a SAML attribute called 
+Note that the address payload is returned back as a SAML attribute called:
 
 `urn:nzl:govt:ict:stds:authn:safeb64:attribute:NZPost:AVS:Assertion:JSON:Address`
 
