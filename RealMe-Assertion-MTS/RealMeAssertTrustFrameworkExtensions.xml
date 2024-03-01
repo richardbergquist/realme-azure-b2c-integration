@@ -1,11 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TrustFrameworkPolicy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<TrustFrameworkPolicy 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
   xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06" PolicySchemaVersion="0.3.0.0" TenantId="yourtenant.onmicrosoft.com" PolicyId="B2C_1A_TrustFrameworkExtensions" PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_TrustFrameworkExtensions">
+  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06" 
+  PolicySchemaVersion="0.3.0.0" 
+  TenantId="yourtenant.onmicrosoft.com" 
+  PolicyId="B2C_1A_RealMeAssertTrustFrameworkExtensions" 
+  PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_RealMeAssertTrustFrameworkExtensions">
 
   <BasePolicy>
     <TenantId>yourtenant.onmicrosoft.com</TenantId>
-    <PolicyId>B2C_1A_TrustFrameworkBase</PolicyId>
+    <PolicyId>B2C_1A_RealMeAssertTrustFrameworkBase</PolicyId>
   </BasePolicy>
 
   <BuildingBlocks>
@@ -40,10 +45,10 @@
   <ClaimsProviders>
     <ClaimsProvider>
       <Domain>realme.govt.nz</Domain>
-      <DisplayName>Real Me Assertion</DisplayName>
+      <DisplayName>RealMe Assertion</DisplayName>
       <TechnicalProfiles>
         <TechnicalProfile Id="RealMeAssertion-SAML2">
-          <DisplayName>Real Me Assertion</DisplayName>
+          <DisplayName>RealMe Assertion</DisplayName>
           <Description>Login and verify your identity with your RealMe account</Description>
           <Protocol Name="SAML2" />
           <Metadata>
@@ -61,8 +66,8 @@
             </Item>
           </Metadata>
           <CryptographicKeys>
-            <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlMessageSigning" />
-            <Key Id="SamlAssertionDecryption" StorageReferenceId="B2C_1A_SamlMessageSigning" />
+            <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_RealMeMTSSamlMessageSigning" />
+            <Key Id="SamlAssertionDecryption" StorageReferenceId="B2C_1A_RealMeMTSSamlMessageSigning" />
           </CryptographicKeys>
           <OutputClaims>
             <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="yourEntityID" />

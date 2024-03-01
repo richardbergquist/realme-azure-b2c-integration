@@ -15,26 +15,17 @@ You will need to generate the metadata file before completing the ITE request.
 
 Follow the integration steps as describe for the MTS environment. You will have to adjust these steps:
 
-1. Use your own cert rather than using the certificate provided by RealMe (`mts_mutual_ssl_sp.pfx`).
-2. In the *TrustFrameworkExtensions.xml* file, check that these lines contain the correct SAML attribute to convert into a claim.   Note that previous versions of the MTS used a different SAML attribute names from ITE and Prod. However they should now align.  Therefore it is worthwhile checking the correct attribute names are being used.
+1. Use your own SAML messaging key pair. Do not reuse the MTS key pair certificate provided by RealMe.
 
-    ```xml
-    <OutputClaim ClaimTypeReferenceId="safeB64Identity" PartnerClaimType="urn:nzl:govt:ict:stds:authn:safeb64:attribute:igovt:IVS:Assertion:Identity" />
-    ```
+1. Use the correct provided RealMe ITE SAML metadata file rather than the previous MTS SAML metadata file.
 
-    With this line:
+1. In the *TrustFrameworkExtensions.xml* file, check that these lines contain the correct SAML attribute to convert into a claim.   Note that previous versions of the MTS used a different SAML attribute names from ITE and Prod. However they should now align.  Therefore it is worthwhile checking the correct attribute names are being used.
+
+    Make sure these line uses the correct `PartnerClaimType`. Note the required presence of `:JSON:` in the value.
 
     ```xml
     <OutputClaim ClaimTypeReferenceId="safeB64Identity" PartnerClaimType="urn:nzl:govt:ict:stds:authn:safeb64:attribute:igovt:IVS:Assertion:JSON:Identity" />
     ```
-
-3. In the *TrustFrameworkExtensions.xml* file, replace this line:
-
-    ```xml
-    <OutputClaim ClaimTypeReferenceId="safeB64Address" PartnerClaimType="urn:nzl:govt:ict:stds:authn:safeb64:attribute:NZPost:AVS:Assertion:Address" />
-    ```
-
-    With this line:
 
     ```xml
     <OutputClaim ClaimTypeReferenceId="safeB64Address" PartnerClaimType="urn:nzl:govt:ict:stds:authn:safeb64:attribute:NZPost:AVS:Assertion:JSON:Address" />
