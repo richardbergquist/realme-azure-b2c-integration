@@ -145,7 +145,7 @@ To know more about the custom policy files, you can read the associated document
     - Search for **IncludeAuthnContextClassReferences** and change the value to `urn:nzl:govt:ict:stds:authn:deployment:GLS:SAML:2.0:ac:classes:ModStrength`.
   - Click **Update**.
 
-## Testing The Policy
+## Testing the Policy
 
 To test the policy, create an application registration in the Azure AD B2C tenant.
 The configuration will direct the response to be send to <https://jwt.ms/>.  

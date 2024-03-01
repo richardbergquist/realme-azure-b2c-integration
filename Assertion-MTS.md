@@ -98,7 +98,7 @@ To know more about policies files, you can read the associated documentation: [P
   - In the OutputCLaims section
     - `<OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="yourEntityID" />`
 
-3. Update the RealMe Login SAML Metadata
+3. Update the RealMe SAML Metadata
 
 - From the `Messaging Test Site bundle zip` (see previous step), open the `MTSIdPAssertionSAMLMetadata.xml` file.
 - Copy the content of the file (do not copy the `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>` line).
@@ -140,7 +140,6 @@ To know more about policies files, you can read the associated documentation: [P
   - On the next page, assuming no errors where detected, click **Import** then **Continue**.
 - Update your configuration: <https://mts.realme.govt.nz/realme-mts/metadata/updateconfiguration.xhtml>
 
-- To view and update metadata browse to <https://mtscloud.realme.govt.nz/Assertion/Metadata>
   - Click [View Update Configuration](https://mtscloud.realme.govt.nz/Assertion/Metadata/SelectConfig)
 - Enter `yourEntityID` in the **entity ID** field.
   - Select Assertion Flow: AssertOnly
@@ -151,24 +150,30 @@ To know more about policies files, you can read the associated documentation: [P
 
 ## Testing the Policy
 
-To test the policy, create an application registration in the B2C.
+To test the policy, create an application registration in the Azure AD B2C tenant.
 The configuration will direct the response to be send to <https://jwt.ms/>.  
-This is a Microsoft developer tool site that allows the raw SAML response to be viewed and understood.
+This is a Microsoft developer tool site that allows the RealMe response as processed from the custom policies to be viewed and understood.  The <https://jwt.ms/> is a provided tool that does need some some extra configuration to work on enabling the implicit flow features. These are described in the steps below.
 
-1. In the B2C Tenant, Click on **Identity Experience Framework**.
-2. Click on **Applications**.
-3. On the application page, click on **Add**
-4. On the application creation page
+1. In the Azure AD B2C Tenant, Click on **Identity Experience Framework**.
+1. Click on **App registrations**.
+1. On the application page, click on **+ New registration**
+1. On the application creation page
     - Enter `jwt.ms` in the **Name** field.
-    - Select `Yes` for **Include web app / web API**
-    - Select `Yes` for **allow implicit flow**
-    - Enter `https://jwt.ms/`
-    - Click on **Create**
+    - Redirect URI
+      - Select Web
+      - Enter `https://jwt.ms/` for the URI
+    - Select **Register**
+    - Return to the  **App registrations** page and click on the application that was just created.
+    - On the left hand side click on **Authentication**
+    - Under the section on Implicit grant and hybrid flows check the flowing checkboxes
+      - Access tokens (used for implicit flows)
+      - ID tokens (used for implicit and hybrid flows)
+    - Please note: These OAuth2/OIDC implicit flows features are not normally used in an application integration using the authorization code flow. They are only enabled here to make the <https://jwt.ms/> tool able to inspect the returned tokens from the B2C custom policies that we are testing for.
 
-5. On the  **Identity Experience Framework**, select the `B2C_1A_REALMEASSERTSIGNUPSIGNIN` policy:
-6. The previously created application should be preselected with the select `jwt.ms` in the **Select application** dropdown.
-7. Click on the **Run now** button, you will be redirected to RealMe
-8. On the RealMe website, fill the IVs attributes then click on `Initiate SAML Response`, it will redirect you to the <https://jwt.ms/> website.
+1. On the  **Identity Experience Framework**, select the `B2C_1A_REALMEASSERTSIGNUPSIGNIN` policy:
+1. The previously created application should be preselected with the select `jwt.ms` in the **Select application** dropdown.
+1. Click on the **Run now** button, you will be redirected to RealMe
+1. On the RealMe website, fill the IVs attributes then click on `Initiate SAML Response`, it will redirect you to the <https://jwt.ms/> website.
 
 ### Understanding the response
 
@@ -187,7 +192,6 @@ In the top level policy file `RealMeAssertSignUpSignIn.xml` it contains
         <OutputClaim ClaimTypeReferenceId="fit" />
         <OutputClaim ClaimTypeReferenceId="safeB64Identity" />
         <OutputClaim ClaimTypeReferenceId="safeB64Address" />
-        <OutputClaim ClaimTypeReferenceId="rcmsOpaqueToken" />
       </OutputClaims>
       <SubjectNamingInfo ClaimType="sub" />
     </TechnicalProfile>
