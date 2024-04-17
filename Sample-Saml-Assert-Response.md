@@ -79,9 +79,11 @@ The SAML response from RealMe is returned with the Assertion XML encrypted, whic
 
 ## The Federated Identity Tag (FIT)
 
-Note that the identity payload is returned back as a SAML attribute called:
+The Federated Identity Tag "FIT" is returned back as a SAML attribute called:
 
 `urn:nzl:govt:ict:stds:authn:attribute:igovt:IVS:FIT`
+
+This is a unique identifier of the RealMe identity to the service provider. It has the property that it is persistently returned for the same identity to the same service provider. However the value is not reused across service providers as part of a privacy by design feature to prevent data matching. In identity terms this is known as a pairwise identifier.
 
 ## The Identity Payload
 
